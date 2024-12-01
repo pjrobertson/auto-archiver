@@ -14,7 +14,7 @@ Python tool to automatically archive social media posts, videos, and images from
 
 There are 3 ways to use the auto-archiver:
 1. (easiest installation) via docker
-2. (local python install) `pip install auto-archiver`
+2. (local python install) `pip install auto-archiver` with python 3.10+
 3. (legacy/development) clone and manually install from repo (see legacy [tutorial video](https://youtu.be/VfAhcuV2tLQ))
 
 But **you always need a configuration/orchestration file**, which is where you'll configure where/what/how to archive. Make sure you read [orchestration](#orchestration).
