@@ -21,17 +21,9 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-    env:
-      DOCKER_IMAGE: ci/${{ github.job }}
-      BUILD_CACHE: /home/runner/.docker/buildkit
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-
-      - uses: actions/cache@v4
-        with:
-          path: ${{ env.BUILD_CACHE }}
-          key: ${{ hashFiles('Dockerfile') }}
         
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -55,5 +47,5 @@ jobs:
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: "type=local,src=${{ env.BUILD_CACHE }}"
-          cache-to: "type=local,dest=${{ env.BUILD_CACHE }}"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
